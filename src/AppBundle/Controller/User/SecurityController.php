@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
 
+/**
+ * Class SecurityController
+ */
 class SecurityController extends Controller
 {
     /**
@@ -25,7 +28,7 @@ class SecurityController extends Controller
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
 
-        $authErrorKey = Security::AUTHENTICATION_ERROR;
+        $authErrorKey    = Security::AUTHENTICATION_ERROR;
         $lastUsernameKey = Security::LAST_USERNAME;
 
         // get the error if any (works with forward and redirect -- see below)
@@ -49,8 +52,8 @@ class SecurityController extends Controller
 
         return $this->render('AppBundle:Home:login.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $error,
-            'csrf_token' => $csrfToken,
+            'error'         => $error,
+            'csrf_token'    => $csrfToken,
         ]);
     }
 }

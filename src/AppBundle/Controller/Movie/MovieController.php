@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Manager\Movie\MovieManager;
 
+/**
+ * Class MovieController
+ */
 class MovieController extends Controller
 {
     /**

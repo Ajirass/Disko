@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Pagerfanta\Pagerfanta;
 use AppBundle\Manager\Movie\MovieManager;
 
+/**
+ * Class HomeController
+ */
 class HomeController extends Controller
 {
     /**

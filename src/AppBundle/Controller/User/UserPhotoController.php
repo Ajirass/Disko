@@ -23,7 +23,7 @@ class UserPhotoController extends Controller
     public function uploadPhoto(Request $request)
     {
         $userPhoto = new UserPhoto();
-        $form = $this->createForm('user_photo_form', $userPhoto);
+        $form      = $this->createForm('user_photo_form', $userPhoto);
 
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -31,7 +31,7 @@ class UserPhotoController extends Controller
             $em->persist($userPhoto);
             $em->flush();
             $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-            $path = $helper->asset($userPhoto, 'file');
+            $path   = $helper->asset($userPhoto, 'file');
 
             return new JsonResponse([
                 'id'       => $userPhoto->getId(),

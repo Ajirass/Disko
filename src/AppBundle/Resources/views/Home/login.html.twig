@@ -4,7 +4,7 @@
 {% block body %}
     <section class="login-form-container">
         <img class="logo" src="{{ asset('bundles/app/images/Common/logo-disko-white.svg') }}" alt="Disko"/>
-        <h1>Connection</h1>
+        <h1>Connexion</h1>
         {% if error %}
             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
