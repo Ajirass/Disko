@@ -1,0 +1,18 @@
+fos_user:
+    db_driver:     orm
+    firewall_name: public
+    user_class:    AppBundle\Entity\User\User
+    from_email:
+        address:     godartrobin@gmail.com
+        sender_name: contact
+    registration:
+        confirmation:
+            from_email: # Use this node only if you don't want the global email address for the confirmation email
+                address:        %fos_user.from_email.address%
+                sender_name:    Contact
+            enabled:    false
+        form:
+            type: user_registration
+    profile:
+        form:
+            type: app_user_profile

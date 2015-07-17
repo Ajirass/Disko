@@ -1,0 +1,726 @@
+/*--------------------
+
+    Généralités
+
+-----------------------*/
+a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+a:focus {
+  text-decoration: none;
+  border: none;
+  outline: 0;
+}
+a:active {
+  text-decoration: none;
+  border: none;
+  outline: 0;
+}
+a:visited {
+  text-decoration: none;
+  border: none;
+}
+/*--------------------
+
+    Reset
+
+-----------------------*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+:focus {
+  outline: 0;
+}
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+li {
+  list-style-type: none;
+}
+html,
+body {
+  width: 100%;
+  margin: 0;
+}
+/*--------------------
+
+    Polices
+
+-----------------------*/
+.regular {
+  font-family: "Gibson-Regular", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+.italic {
+  font-family: "Gibson-Italic", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+.light {
+  font-family: "Gibson-Light", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+}
+.light-italic {
+  font-family: "Gibson-LightItalic", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+.semibold {
+  font-family: "Gibson-SemiBold", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+.semibold-italic {
+  font-family: "Gibson-SemiBoldItalic", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+.bold {
+  font-family: "Gibson-Bold", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+}
+.bold-italic {
+  font-family: "Gibson-BoldItalic", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+  font-family: Flaticon;
+}
+.flaticon-ruby:before {
+  content: "\e000";
+}
+.flaticon-diamond13:before {
+  content: "\e001";
+}
+/*--------------------
+
+    Functions
+
+-----------------------*/
+/*----------------
+
+	  Couleurs
+
+-----------------*/
+/*--------------------
+
+    Animations
+
+-----------------------*/
+@-webkit-keyframes contender-click {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+  }
+}
+@-webkit-keyframes radioactive {
+  0% {
+    text-shadow: 0px 0px 12px #fff;
+    color: #fff;
+  }
+  20% {
+    text-shadow: 0px 0px 12px #a7ffa8;
+    color: #a7ffa8;
+  }
+  40% {
+    text-shadow: 0px 0px 12px #1bff51;
+    color: #1bff51;
+  }
+  60% {
+    text-shadow: 0px 0px 12px #fffe66;
+    color: #fffe66;
+  }
+  80% {
+    text-shadow: 0px 0px 12px #5aa2ff;
+    color: #5aa2ff;
+  }
+  100% {
+    text-shadow: 0px 0px 12px #fff;
+    color: #fff;
+  }
+}
+@keyframes radioactive {
+  0% {
+    text-shadow: 0px 0px 12px #fff;
+    color: #fff;
+  }
+  20% {
+    text-shadow: 0px 0px 12px #a7ffa8;
+    color: #a7ffa8;
+  }
+  40% {
+    text-shadow: 0px 0px 12px #1bff51;
+    color: #1bff51;
+  }
+  60% {
+    text-shadow: 0px 0px 12px #fffe66;
+    color: #fffe66;
+  }
+  80% {
+    text-shadow: 0px 0px 12px #5aa2ff;
+    color: #5aa2ff;
+  }
+  100% {
+    text-shadow: 0px 0px 12px #fff;
+    color: #fff;
+  }
+}
+@-webkit-keyframes rainbowLoader {
+  0% {
+    background: rgba(245, 35, 94, 0.62);
+  }
+  20% {
+    background: rgba(245, 45, 42, 0.62);
+  }
+  40% {
+    background: rgba(245, 93, 44, 0.62);
+  }
+  60% {
+    background: rgba(245, 76, 60, 0.62);
+  }
+  80% {
+    background: rgba(245, 54, 57, 0.62);
+  }
+  100% {
+    background: rgba(245, 35, 94, 0.62);
+  }
+}
+@keyframes rainbowLoader {
+  0% {
+    background: rgba(245, 35, 94, 0.62);
+  }
+  20% {
+    background: rgba(245, 45, 42, 0.62);
+  }
+  40% {
+    background: rgba(245, 93, 44, 0.62);
+  }
+  60% {
+    background: rgba(245, 76, 60, 0.62);
+  }
+  80% {
+    background: rgba(245, 54, 57, 0.62);
+  }
+  100% {
+    background: rgba(245, 35, 94, 0.62);
+  }
+}
+@-webkit-keyframes playDown {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 50%;
+  }
+}
+@keyframes playDown {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 50%;
+  }
+}
+@-webkit-keyframes rubiesWon {
+  0% {
+    bottom: 120px;
+    opacity: 0;
+  }
+  40% {
+    bottom: 140px;
+    opacity: 1;
+  }
+  100% {
+    bottom: 160px;
+    opacity: 0;
+  }
+}
+@keyframes rubiesWon {
+  0% {
+    bottom: 120px;
+    opacity: 0;
+  }
+  50% {
+    bottom: 135px;
+    opacity: 1;
+  }
+  100% {
+    bottom: 155px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes submitting-contender {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes submitting-contender {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes reveal-battle {
+  0% {
+    opacity: 0;
+    top: -50px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+@keyframes reveal-battle {
+  0% {
+    opacity: 0;
+    top: -50px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+/*--------------------
+
+        - General -
+
+-----------------------*/
+body {
+  overflow-x: hidden;
+  font-family: 'Lato', Sans-serif;
+}
+button {
+  color: black;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000;
+}
+.img-reveal {
+  opacity: 0;
+  transition: 300ms;
+}
+.img-reveal.reveal {
+  opacity: 1;
+}
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.utils-centerXY {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#login-page,
+#registration-page {
+  background: url("../../bundles/app/images/Common/home.jpg") center center no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.register-link,
+.login-link {
+  margin-top: 10px;
+  background: #FFF;
+  color: #488CBF;
+  border: none;
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  text-transform: uppercase;
+}
+/*--------------------
+
+        REGISTRATION
+
+-----------------------*/
+#registration-page {
+  position: relative;
+}
+#registration-page .registration-form-container {
+  background: rgba(255, 255, 255, 0.3);
+  width: 500px;
+  margin: 50px auto;
+  padding: 30px 20px;
+}
+#registration-page .registration-form-container h1 {
+  color: #FFF;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #FFF;
+  font-weight: 100;
+  text-shadow: 1px 1px rgba(133, 133, 133, 0.47);
+}
+#registration-page .registration-form-container label {
+  color: #488CBF;
+}
+#registration-page .registration-form-container input[type="text"],
+#registration-page .registration-form-container input[type="email"],
+#registration-page .registration-form-container input[type="password"] {
+  display: block;
+  border: none;
+  height: 40px;
+  width: 350px;
+  padding: 0 15px;
+  margin: 20px auto;
+}
+#registration-page .registration-form-container .profile-mask {
+  width: 120px;
+  height: 120px;
+  background-color: #FFF;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+#registration-page .registration-form-container .profile-mask #profile-picture {
+  height: auto;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#registration-page .registration-form-container .btn-success {
+  background: #488CBF;
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  border: none;
+  width: 200px;
+  color: #FFF;
+}
+#registration-page .registration-form-container .progress {
+  width: 150px;
+  border: none;
+  margin: 10px auto;
+  height: 15px;
+}
+#registration-page .registration-form-container .progress .progress-bar {
+  border: none;
+  height: 16px;
+  line-height: 14px;
+}
+#registration-page .registration-form-container input[type="submit"] {
+  background: #488CBF;
+  color: #FFF;
+  border: none;
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  text-transform: uppercase;
+}
+#registration-page .registration-form-container .register-label {
+  color: #FFF;
+  font-weight: normal;
+  text-align: center;
+  display: block;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #FFF;
+  margin-bottom: 7px;
+  text-shadow: 1px 1px rgba(133, 133, 133, 0.47);
+}
+#registration-page .registration-form-container #user_registration_moviesCategories,
+#registration-page .registration-form-container #user_registration_preferredMovie {
+  margin-bottom: 10px;
+}
+#registration-page .registration-form-container #user_registration_moviesCategories label,
+#registration-page .registration-form-container #user_registration_preferredMovie label {
+  margin-right: 10px;
+  color: #FFF;
+  text-shadow: 1px 1px rgba(133, 133, 133, 0.47);
+}
+#registration-page .registration-form-container #user_registration_moviesCategories input,
+#registration-page .registration-form-container #user_registration_preferredMovie input {
+  margin-right: 3px;
+}
+/*--------------------
+
+        LOGIN
+
+-----------------------*/
+#login-page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#login-page .logo {
+  margin: 0 auto 15px;
+  width: 90px;
+  height: auto;
+  display: block;
+}
+#login-page .login-form-container {
+  background: rgba(255, 255, 255, 0.3);
+  width: 400px;
+  padding: 30px 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#login-page .login-form-container h1 {
+  color: #FFF;
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #FFF;
+  font-weight: 100;
+  text-shadow: 1px 1px rgba(133, 133, 133, 0.47);
+}
+#login-page .login-form-container input[type="text"],
+#login-page .login-form-container input[type="email"],
+#login-page .login-form-container input[type="password"] {
+  display: block;
+  border: none;
+  height: 40px;
+  width: 350px;
+  padding: 0 15px;
+  margin: 20px auto;
+}
+#login-page .login-form-container .btn-success {
+  background: #488CBF;
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  border: none;
+  width: 200px;
+  color: #FFF;
+}
+#login-page .login-form-container .progress {
+  width: 150px;
+  border: none;
+  margin: 10px auto;
+  height: 15px;
+}
+#login-page .login-form-container .progress .progress-bar {
+  border: none;
+  height: 16px;
+  line-height: 14px;
+}
+#login-page .login-form-container input[type="submit"] {
+  background: #488CBF;
+  color: #FFF;
+  border: none;
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  text-transform: uppercase;
+}
+/*--------------------
+
+        HEADER
+
+-----------------------*/
+header {
+  width: 100%;
+  height: 100px;
+  padding: 20px 0;
+}
+header h1 {
+  color: #000;
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  font-weight: 100;
+}
+header .header-profile .profile-mask {
+  float: left;
+  width: 50px;
+  height: 50px;
+  background-color: #FFF;
+  border-radius: 50%;
+  display: block;
+  margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+}
+header .header-profile .profile-mask img {
+  height: auto;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/*--------------------
+
+        HOME
+
+-----------------------*/
+#home-page {
+  background: url("../../bundles/app/images/Common/home.jpg") center center no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+#home-page .container {
+  background: #FFF;
+}
+/*--------------------
+
+    MEDIA QUERIES
+
+-----------------------*/

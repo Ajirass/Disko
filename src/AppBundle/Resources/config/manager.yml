@@ -1,0 +1,9 @@
+services:
+    # Movie
+    app.manager.movie:
+        class:     AppBundle\Manager\Movie\MovieManager
+        arguments: [@doctrine.orm.entity_manager, 'AppBundle\Entity\Movie\Movie']
+    # MovieReview
+    app.manager.movieReview:
+        class:     AppBundle\Manager\Movie\MovieReviewManager
+        arguments: [@doctrine.orm.entity_manager, 'AppBundle\Entity\Movie\MovieReview']

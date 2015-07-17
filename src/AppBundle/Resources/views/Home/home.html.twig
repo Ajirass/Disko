@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+{% block title %}Home{% endblock %}
+{% block pageId %}home-page{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% block mainTitle %}<h1>Liste des films</h1>{% endblock %}
+{% endblock %}
+{% block body %}
+    <section id="movie-list" class="clearfix">
+        <table class="table table-striped">
+            <tr>
+                <th width="50%">Titre</th>
+                <th width="20%">Réalisateur</th>
+                <th width="10%">Date de sortie</th>
+                <th width="10%">nb votes</th>
+            </tr>
+            {% for movie in moviesPager.currentPageResults %}
+                <tr>
+                    <td class="movie-title"><a href="{{ url('movie_show', {'id': movie.id}) }}">{{ movie.title }}</a></td>
+                    <td>{{ movie.director }}</td>
+                    <td>{{ movie.releaseDate|date('d/m/Y') }}</td>
+                    <td>{{ countReview(movie.id) }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    {{ pagerfanta(moviesPager, 'twitter_bootstrap3', { 'proximity': 3 }) }}
+{% endblock %}

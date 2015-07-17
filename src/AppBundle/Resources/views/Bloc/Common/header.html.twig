@@ -1,0 +1,13 @@
+{% if is_granted('ROLE_USER') %}
+    {% set user = app.user %}
+    <div class="header-profile pull-left clearfix">
+        <div class="profile-mask">
+            <img src="{% if null != user.photo %}{{ vich_uploader_asset(user.photo, 'file') }}{% else %}{{ asset('bundles/app/images/User/profile-icon.png') }}{% endif %}" alt="Photo de profil"/>
+        </div>
+        <div class="pull-left">
+            <p>{{ user.username }}</p>
+            <a href="/logout">Déconnexion</a>
+        </div>
+    </div>
+    {% block mainTitle %}{% endblock %}
+{% endif %}

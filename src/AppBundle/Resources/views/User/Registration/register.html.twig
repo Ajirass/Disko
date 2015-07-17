@@ -1,0 +1,130 @@
+{% extends '::base.html.twig' %}
+{% block pageId %}registration-page{% endblock %}
+{% block body %}
+
+    <section class="registration-form-container">
+        <h1>Inscription</h1>
+        <form action="{{ path('user_ajax_photo_upload') }}" {{ form_enctype(photoForm) }} method="POST" class="user-photo-form" id="photo-form">
+            <div class="profile-mask">
+                <img src="{{ asset('bundles/app/images/User/profile-icon.png') }}" alt="Photo de profil" id="profile-picture"/>
+            </div>
+            <div class="progress hidden" style="width: 150px">
+                <div class="progress-bar progress-bar-success"></div>
+            </div>
+            <label for="{{ photoForm.children.file.vars.id }}" class="btn btn-success">
+                <i class="glyphicon glyphicon-picture"></i>
+                Photo de profil
+            </label>
+            {{ form_widget(photoForm.file, {'attr': {'class': 'hidden'}}) }}
+        </form>
+
+        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="user-registration-form">
+            {{ form_widget(form.email, {'attr': {'placeholder': 'Email'}}) }}
+            {{ form_widget(form.username, {'attr': {'placeholder': 'Nom d\'utilisateur'}}) }}
+            {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'}}) }}
+            {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirmer mot de passe'}}) }}
+            {{ form_widget(form.firstName, {'attr': {'placeholder': 'Prénom'}}) }}
+            {{ form_widget(form.lastName, {'attr': {'placeholder': 'Nom'}}) }}
+            {{ form_label(form.moviesCategories, null, {'label_attr': {'class': 'register-label'}}) }}
+            {{ form_widget(form.moviesCategories, {'attr': {'placeholder': 'Genres de films préféré'}}) }}
+            {{ form_label(form.preferredMovie, null, {'label_attr': {'class': 'register-label'}}) }}
+            {{ form_widget(form.preferredMovie, {'attr': {'placeholder': 'Film préféré'}}) }}
+            {{ form_rest(form) }}
+            <ul>
+                {% for reviews in form.reviews %}
+                    <li>
+                        <div class="form-group">
+                            {{ form_widget(reviews) }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="btn btn-success" id="add-another-movie">
+                <i class="glyphicon glyphicon-plus"></i>
+                Notez un autre film
+            </a>
+            <div>
+                <input type="submit" value="Valider" />
+            </div>
+            <a class="login-link" href="{{ path('login_page') }}">Déja inscrit - connexion</a>
+        </form>
+    </section>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        // garde une trace du nombre de champs email qui ont été affichés
+        var reviewCount = '{{ form.reviews | length }}';
+
+        jQuery(document).ready(function() {
+            addWidget();
+            jQuery('#add-another-movie').click(function() {
+                addWidget();
+
+                return false;
+            });
+
+            function addWidget()
+            {
+                var reviewList = jQuery('#user_registration_reviews');
+
+                // parcourt le template prototype
+                var newWidget = reviewList.attr('data-prototype');
+                // remplace les "__name__" utilisés dans l'id et le nom du prototype
+                // par un nombre unique pour chaque email
+                // le nom de l'attribut final ressemblera à name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, reviewCount);
+                reviewCount++;
+
+                // créer une nouvelle liste d'éléments et l'ajoute à notre liste
+                var newLi = jQuery('<li></li>').html(newWidget);
+                newLi.appendTo(jQuery('#user_registration_reviews'));
+            }
+
+            $('#photo-form').on('change', function(){
+                var $loadingBar = $('.progress').children();
+                //var $label = $this.siblings('label');
+                var $input = $('input[type=hidden]');
+
+                $loadingBar.parent().removeClass('hidden');
+
+                var data = new FormData($('#photo-form')[0]);
+
+                // On envoie la requête AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ path('user_ajax_photo_upload') }}",
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        $loadingBar
+                                .css('width', '100%')
+                                .text('succeed');
+                        $input.val(response.id);
+                        console.log(response);
+                        $('#profile-picture').attr('src', response.path);
+                        $('#user_registration_photoId').val(response.id);
+                    },
+                    error: function(response){
+                        $loadingBar
+                                .css('width', '100%')
+                                .removeClass('progress-bar-success')
+                                .addClass('progress-bar-danger')
+                                .text('Erreur');
+                    },
+                    xhr: function()
+                    {
+                        var xhr = $.ajaxSettings.xhr();
+                        xhr.upload.addEventListener("progress", function(e){
+                            $loadingBar.css('width', e.loaded / e.total * 100 + '%');
+                        }, false);
+
+                        return xhr;
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock javascript %}

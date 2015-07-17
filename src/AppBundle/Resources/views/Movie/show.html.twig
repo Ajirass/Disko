@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+{% block title %}Home{% endblock %}
+{% block pageId %}home-page{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% block mainTitle %}<h1>{{ movie.title }}</h1>{% endblock %}
+{% endblock %}
+{% block body %}
+    <section id="movie" class="clearfix">
+        {{ movie.director }}
+        {{ movie.releaseDate|date('d/m/Y') }}
+        <p>Note Moyenne: {{ avgReviews(movie.id) }}</p>
+        <h2>Notez par:</h2>
+    </section>
+
+{% endblock %}

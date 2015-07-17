@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Disko - {% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        {% stylesheets
+        'bundles/app/css/*.css'
+        'bundles/app/less/*.less'
+        filter='less, cssrewrite'
+        output='css/style.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+</head>
+<body>
+    <div id="{% block pageId %}{% endblock %}">
+        <div class="container">
+            <header>
+                {% block header %}
+                    {% include '@App/Bloc/Common/header.html.twig' %}
+                {% endblock %}
+            </header>
+
+            {% block body %}{% endblock %}
+
+            <footer>
+                {% block footer %}
+                    {% include '@App/Bloc/Common/footer.html.twig' %}
+                {% endblock %}
+            </footer>
+        </div>
+    </div>
+
+    {% block javascript %}
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+                e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+                e.src='https://www.google-analytics.com/analytics.js';
+                r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','{{ analyticsId }}','auto');ga('send','pageview');
+        </script>
+        {# Load jQuery from Google CDN #}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        {# If no jQuery is loaded, fallback to a local jQuery instead #}
+        <script type="text/javascript">window.jQuery || document.write('<script src="{{ asset('/bundles/app/js/jquery-1.11.3.min.js') }}"><\/script>')</script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    {% endblock javascript %}
+</body>
+</html>

@@ -1,0 +1,6 @@
+services:
+    app.twig.extension.movie_review:
+        class: AppBundle\Twig\Extension\MovieReviewExtension
+        arguments: [@service_container]
+        tags:
+            -  { name: twig.extension }

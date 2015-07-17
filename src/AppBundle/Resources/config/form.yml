@@ -1,0 +1,23 @@
+services:
+    # User
+    user.registration.form.type:
+        class: AppBundle\Form\Type\User\UserRegistrationFormType
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: form.type, alias: user_registration }
+
+    user.registration.photo.form.type:
+        class: AppBundle\Form\Type\User\UserPhotoFormType
+        tags:
+            - { name: form.type, alias: user_photo_form }
+
+    #Movie
+    movie.form.type:
+        class: AppBundle\Form\Type\Movie\MovieFormType
+        tags:
+            - { name: form.type, alias: movie_form }
+
+    review.form.type:
+        class: AppBundle\Form\Type\Movie\MovieReviewFormType
+        tags:
+            - { name: form.type, alias: review_form }

@@ -1,0 +1,320 @@
+<?php
+namespace AppBundle\Entity\User;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use FOS\UserBundle\Model\User as BaseUser;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use AppBundle\Entity\Movie\Movie;
+use AppBundle\Entity\Movie\MovieCategory;
+
+/**
+ * User
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="users")
+ */
+class User extends BaseUser
+{
+    use ORMBehaviors\Timestampable\Timestampable;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstName", type="string", length=255)
+     */
+    protected $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastName", type="string", length=255)
+     */
+    protected $lastName;
+
+    /**
+     * UserPhoto
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User\UserPhoto")
+     */
+    protected $photo;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie\MovieCategory")
+     */
+    protected $moviesCategories;
+
+    /**
+     * @var Movie
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Movie\Movie")
+     */
+    protected $preferedMovie;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Movie\MovieReview", mappedBy="user", cascade={"persist","remove"})
+     */
+    protected $reviews;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->moviesCategories = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
+        parent::__construct();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return User
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set moviesCategories
+     *
+     * @param string $moviesCategories
+     * @return User
+     */
+    public function setMoviesGenres($moviesCategories)
+    {
+        $this->moviesCategories = $moviesCategories;
+
+        return $this;
+    }
+
+    /**
+     * Get moviesCategories
+     *
+     * @return ArrayCollection
+     */
+    public function getMoviesCategories()
+    {
+        return $this->moviesCategories;
+    }
+
+    /**
+     * Set preferedMovie
+     *
+     * @param string $preferedMovie
+     * @return User
+     */
+    public function setPreferedMovie($preferedMovie)
+    {
+        $this->preferedMovie = $preferedMovie;
+
+        return $this;
+    }
+
+    /**
+     * Get preferedMovie
+     *
+     * @return string 
+     */
+    public function getPreferedMovie()
+    {
+        return $this->preferedMovie;
+    }
+
+    /**
+     * Set movies
+     *
+     * @param string $movies
+     * @return User
+     */
+    public function setMovies($movies)
+    {
+        $this->movies = $movies;
+
+        return $this;
+    }
+
+    /**
+     * Get movies
+     *
+     * @return string 
+     */
+    public function getMovies()
+    {
+        return $this->movies;
+    }
+
+    /**
+     * @param ArrayCollection $moviesCategories
+     *
+     * @return User
+     */
+    public function setMoviesCategories(ArrayCollection $moviesCategories)
+    {
+        $this->moviesCategories = $moviesCategories;
+
+        return $this;
+    }
+
+    /**
+     * Add movies
+     *
+     * @param \AppBundle\Entity\Movie\Movie $movies
+     * @return User
+     */
+    public function addMovie(\AppBundle\Entity\Movie\Movie $movies)
+    {
+        $this->movies[] = $movies;
+
+        return $this;
+    }
+
+    /**
+     * Remove movies
+     *
+     * @param \AppBundle\Entity\Movie\Movie $movies
+     */
+    public function removeMovie(\AppBundle\Entity\Movie\Movie $movies)
+    {
+        $this->movies->removeElement($movies);
+    }
+
+    /**
+     * Add moviesCategories
+     *
+     * @param \AppBundle\Entity\Movie\MovieCategory $moviesCategories
+     * @return User
+     */
+    public function addMoviesCategory(\AppBundle\Entity\Movie\MovieCategory $moviesCategories)
+    {
+        $this->moviesCategories[] = $moviesCategories;
+
+        return $this;
+    }
+
+    /**
+     * Remove moviesCategories
+     *
+     * @param \AppBundle\Entity\Movie\MovieCategory $moviesCategories
+     */
+    public function removeMoviesCategory(\AppBundle\Entity\Movie\MovieCategory $moviesCategories)
+    {
+        $this->moviesCategories->removeElement($moviesCategories);
+    }
+
+    /**
+     * Add reviews
+     *
+     * @param \AppBundle\Entity\Movie\MovieReview $reviews
+     * @return User
+     */
+    public function addReview(\AppBundle\Entity\Movie\MovieReview $reviews)
+    {
+        $this->reviews[] = $reviews;
+
+        return $this;
+    }
+
+    /**
+     * Remove reviews
+     *
+     * @param \AppBundle\Entity\Movie\MovieReview $reviews
+     */
+    public function removeReview(\AppBundle\Entity\Movie\MovieReview $reviews)
+    {
+        $this->reviews->removeElement($reviews);
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+}
